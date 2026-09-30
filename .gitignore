@@ -1,0 +1,6 @@
+.env
+.session_secret
+private_uploads/
+__pycache__/
+*.pyc
+.pytest_cache/

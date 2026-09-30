@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AdmitCrew | Staff workspace</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/assets/admitcrew.css"><script src="/assets/staff.js" defer></script>
+</head>
+<body class="staff-body">
+  <header class="staff-top"><div class="shell"><a class="brand" href="/"><span class="brand-mark">AC</span><span>AdmitCrew<small>Staff workspace</small></span></a><div class="meta"><span class="staff-env"><span class="dot"></span> Local practice</span><button id="logoutButton" class="btn btn-outline btn-small" type="button" hidden>Sign out</button></div></div></header>
+  <main>
+        <div id="loginWrap" class="login-wrap"><form id="loginForm" class="panel login-card"><div class="login-emblem">AC<span>STAFF</span></div><div class="eyebrow">Staff access</div><h1>Welcome back.</h1><p>Your review desk for student conversations, document checks and message approvals.</p><label class="field" id="emailField" hidden>Email<input id="email" type="email" autocomplete="username"></label><label class="field"><span id="passwordLabel">Local staff password</span><input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" class="btn" type="submit">Sign in to workspace →</button><div id="loginNotice" class="notice" role="status" aria-live="polite"></div><small class="muted tiny">Do not share your password or credentials in screenshots.</small></form></div>
+    <div id="staffPane" class="staff-layout" hidden>
+      <aside class="sidebar" aria-label="Staff sections">
+        <div class="side-caption">Workspace</div>
+        <button class="side-link active" type="button" data-view="overview"><span>Overview</span></button>
+        <button class="side-link" type="button" data-view="queue"><span>Approval queue</span><span id="queueCount">0</span></button>
+        <button class="side-link" type="button" data-view="leads"><span>Leads</span></button>
+        <button class="side-link" type="button" data-view="conversations"><span>Conversations</span></button>
+        <button class="side-link" type="button" data-view="documents"><span>Documents</span></button>
+        <button class="side-link" type="button" data-view="escalations"><span>Staff escalations</span><span id="escalationCount">0</span></button>
+        <button class="side-link" type="button" data-view="activity"><span>Message history</span></button>
+        <button class="side-link" type="button" data-view="programs"><span>Program list</span></button>
+        <div class="side-caption">Local tools</div>
+        <button class="side-link" type="button" id="sidebarRefresh"><span>↻ Refresh records</span></button>
+      </aside>
+      <div class="staff-main">
+        <div class="staff-heading"><div><div class="eyebrow">Operations center</div><h1 id="pageTitle">Overview</h1><p id="pageSubtitle">Review every step before a message reaches the local test chat.</p></div><div class="staff-actions"><button id="refreshButton" class="btn btn-outline btn-small" type="button">↻ Refresh</button><button id="reminderButton" class="btn btn-small" type="button">Run reminder agent</button></div></div>
+        <div id="staffNotice" class="statusbar" role="status" aria-live="polite"></div>
+        <section id="view-overview" class="staff-view">
+          <div class="review-banner"><div><span class="review-kicker">Human oversight</span><h2>Every reply has a review step.</h2><p>Agents prepare information and reminders. Your approval decides what appears in the local test chat.</p></div><button class="btn btn-light btn-small" type="button" data-goto="queue">Review drafts →</button></div>
+          <div class="stat-grid"><div class="panel stat-card"><small>Total leads</small><strong id="statLeads">0</strong><span>Saved student profiles</span></div><div class="panel stat-card"><small>Awaiting approval</small><strong id="statPending">0</strong><span>Nothing sent automatically</span></div><div class="panel stat-card"><small>Document problems</small><strong id="statProblems">0</strong><span>Staff can review each reason</span></div><div class="panel stat-card"><small>Sent to test chat</small><strong id="statSent">0</strong><span>Only after staff approval</span></div></div>
+          <div class="two-col"><div class="staff-section"><div class="panel"><div class="panel-head"><div><h2>Next approvals</h2><p class="tiny">Drafts waiting in the queue.</p></div><button class="btn btn-outline btn-small" type="button" data-goto="queue">View all →</button></div><div id="overviewQueue" class="list scroll-list"></div></div></div><div class="staff-section"><div class="panel"><div class="panel-head"><div><h2>Recent activity</h2><p class="tiny">Messages and document checks.</p></div></div><div id="overviewActivity" class="list scroll-list"></div></div></div></div>
+        </section>
+        <section id="view-queue" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Approval queue</h2><p class="tiny">Edit a draft if needed, then approve or reject it.</p></div><span class="tag amber">Staff-controlled</span></div><div id="queueList" class="list"></div><h3 style="margin-top:30px">Delivery recovery</h3><p class="tiny">A partially completed local delivery can be reconciled here.</p><div id="recoveryList" class="list"></div></div></section>
+        <section id="view-leads" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Student leads</h2><p class="tiny">One record per normalized phone number.</p></div><input id="leadSearch" class="search staff-search" type="search" placeholder="Search name or phone" aria-label="Search leads"></div><div id="leadsList" class="record-grid"></div></div></section>
+        <section id="view-conversations" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Conversations</h2><p class="tiny">Inbound questions and approved replies grouped by chat.</p></div></div><div id="conversationsList" class="list"></div></div></section>
+        <section id="view-documents" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Document results</h2><p class="tiny">Automated checks assist review; authenticity is not verified.</p></div></div><div id="documentsList" class="record-grid"></div></div></section>
+        <section id="view-escalations" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Questions for staff</h2><p class="tiny">Unlisted or ambiguous university questions appear here.</p></div></div><div id="escalationsList" class="list"></div></div></section>
+        <section id="view-activity" class="staff-view" hidden><div class="two-col"><div class="panel" style="padding:22px"><div class="panel-head"><div><h2>Outbound decisions</h2><p class="tiny">Draft, approved, rejected and sent states.</p></div></div><div id="outboundList" class="list scroll-list"></div></div><div class="panel" style="padding:22px"><div class="panel-head"><div><h2>Audit history</h2><p class="tiny">Agent and staff actions.</p></div></div><div id="auditList" class="list scroll-list"></div></div></div></section>
+        <section id="view-programs" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Approved practice programs</h2><p class="tiny">Replies can quote only records in this list.</p></div><span class="tag amber">Fictional data</span></div><div id="staffPrograms" class="record-grid"></div></div></section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "AdmitCrew Reminder Drafts",
+  "active": false,
+  "settings": { "timezone": "Asia/Karachi" },
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Test",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [220, 220]
+    },
+    {
+      "parameters": {
+        "rule": { "interval": [ { "field": "hours", "hoursInterval": 6 } ] }
+      },
+      "id": "schedule-trigger",
+      "name": "Every Six Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [220, 420]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bxzjunrthbdmicqwgzeh.supabase.co/functions/v1/admitcrew-reminders",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "request-drafts",
+      "name": "Create Pending Reminders",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 320],
+      "notes": "Configure a Header Auth credential named X-Workflow-Token using a private random token. Store only its SHA-256 hex digest as WORKFLOW_TOKEN_SHA256 in Supabase Edge Function secrets. This endpoint creates pending drafts only. Do not place a Supabase secret key in n8n."
+    }
+  ],
+  "connections": {
+    "Manual Test": { "main": [ [ { "node": "Create Pending Reminders", "type": "main", "index": 0 } ] ] },
+    "Every Six Hours": { "main": [ [ { "node": "Create Pending Reminders", "type": "main", "index": 0 } ] ] }
+  },
+  "pinData": {},
+  "tags": []
+}

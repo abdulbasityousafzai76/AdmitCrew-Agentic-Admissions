@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AdmitCrew | Study abroad practice portal</title>
+  <meta name="description" content="Explore practice university programs, share your details, and track staff-approved study abroad replies.">
+  <link rel="stylesheet" href="/assets/admitcrew.css"><script src="/assets/student.js" defer></script>
+</head>
+<body>
+  <div class="practice-ribbon"><div class="shell"><span><span class="ribbon-dot"></span> AdmitCrew practice environment</span><span>University details are examples for testing</span></div></div>
+  <div class="student-hero">
+    <header class="shell topbar">
+      <a class="brand" href="/"><span class="brand-mark">AC</span><span>AdmitCrew<small>Admissions workspace</small></span></a>
+      <nav class="nav" aria-label="Main navigation"><a href="#process">How it works</a><a href="#programs">Programs</a><a class="btn btn-light btn-small" href="/staff">Staff portal ↗</a></nav>
+    </header>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Your next chapter starts here <span class="eyebrow-rule"></span></div>
+        <h1>Ambitious plans.<br><em>Clear next steps.</em></h1>
+        <p>Explore the office's practice programs, share your details once, and ask what matters. A staff member reviews every reply before it reaches your chat.</p>
+        <div class="hero-points"><span>✓ One saved student profile</span><span>✓ Office-approved practice list</span><span>✓ Human-reviewed replies</span></div>
+        <div class="hero-signature"><span class="signature-line"></span><span>Made for thoughtful admissions guidance</span></div>
+      </div>
+      <form id="startForm" class="start-panel" novalidate>
+        <span class="tag"><span class="dot"></span> Local test chat</span>
+        <h2 style="margin-top:16px">Let's get started.</h2>
+        <p>Use a fake test phone number. Returning numbers connect to the same saved lead.</p>
+        <label class="field">Phone number<input id="phone" type="tel" autocomplete="tel" placeholder="0301 2345678" required></label>
+        <button class="btn" id="startButton" type="submit">Start chat <span aria-hidden="true">→</span></button>
+        <div id="startNotice" class="notice" role="status" aria-live="polite"></div>
+        <small class="muted tiny">Practice environment only. Please do not enter real personal information.</small>
+      </form>
+    </div>
+  </div>
+  <main>
+    <div class="shell steps-strip panel" id="process">
+      <div class="step-item"><span class="step-num">01</span><div><strong>Share your profile</strong><small>Country, marks, IELTS and budget in one place.</small></div></div>
+      <div class="step-item"><span class="step-num">02</span><div><strong>Ask about a program</strong><small>Answers use only the office's practice list.</small></div></div>
+      <div class="step-item"><span class="step-num">03</span><div><strong>Staff reviews the reply</strong><small>Nothing appears in chat until a staff member approves.</small></div></div>
+    </div>
+    <section class="shell student-main" id="workspace" aria-label="Student workspace">
+      <div class="section-title"><div><div class="eyebrow">Your admissions workspace</div><h2>One place for your next step.</h2><p>Complete your profile, ask a question, and upload a clearly labeled fake PDF for document checks.</p></div><span id="sessionBadge" class="tag neutral">Start a chat to continue</span></div>
+      <div class="work-grid">
+        <div>
+          <form id="profileForm" class="panel intake-panel" novalidate>
+            <div class="panel-head"><div><h3>Student profile</h3><p class="tiny">Your details stay linked to your phone number.</p></div><span class="tag neutral">Intake</span></div>
+            <div class="profile-progress"><div class="progress-label"><span>Profile progress</span><strong id="profileProgress">0 of 5</strong></div><div class="progress-track"><span id="progressFill"></span></div><small id="profileHelp">Start a chat to save your details.</small></div>
+            <fieldset id="profileFields" disabled style="border:0;padding:0;margin:0">
+              <label class="field">Full name<input id="full_name" maxlength="120" autocomplete="name" placeholder="Test Student"></label>
+              <div class="grid-2"><label class="field">Preferred country<select id="preferred_country"><option value="">Choose country</option><option>UK</option><option>Canada</option><option>Germany</option><option>Australia</option></select></label><label class="field">Marks (%)<input id="marks" type="number" min="0" max="100" step="0.1" placeholder="78"></label></div>
+              <div class="grid-2"><label class="field">IELTS status<select id="ielts_status"><option value="">Choose status</option><option value="taken">Taken</option><option value="not_taken">Not taken yet</option></select></label><label class="field">Overall IELTS score<input id="ielts_score" type="number" min="0" max="9" step="0.5" placeholder="6.5"></label></div>
+              <div class="grid-2"><label class="field">Budget amount<input id="budget_amount" type="number" min="0" placeholder="40000"></label><label class="field">Currency<select id="budget_currency"><option value="">Currency</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="EUR">EUR</option><option value="AUD">AUD</option><option value="PKR">PKR</option></select></label></div>
+              <button class="btn" id="profileButton" type="submit">Save profile</button>
+            </fieldset>
+            <div id="profileNotice" class="notice" role="status" aria-live="polite"></div>
+          </form>
+          <form id="documentForm" class="panel upload-panel" novalidate>
+            <div class="panel-head"><div><h3>Check a fake document</h3><p class="tiny">Readability, expiry and name match.</p></div><span class="tag amber">PDF or image</span></div>
+            <fieldset id="documentFields" disabled style="border:0;padding:0;margin:0">
+              <label class="field">Document type<select id="doc_type"><option value="passport">Passport</option><option value="transcript">Transcript</option><option value="ielts">IELTS result</option></select></label>
+              <label class="field">Fake test PDF or image<input id="doc_file" type="file" accept="application/pdf,image/png,image/jpeg,.pdf,.png,.jpg,.jpeg"></label>
+              <button class="btn btn-outline" id="documentButton" type="submit">Upload and check</button>
+            </fieldset>
+            <div id="documentNotice" class="notice" role="status" aria-live="polite"></div>
+            <div class="upload-info"><span aria-hidden="true">ⓘ</span><span>Use only provided fake documents. The check does not verify authenticity.</span></div>
+          </form>
+        </div>
+        <section class="panel chat-panel" aria-label="Conversation">
+          <div class="panel-head"><div><h3>Your conversation</h3><p class="tiny">Replies appear here after staff approval.</p></div><button class="btn btn-outline btn-small" id="refreshChat" type="button">↻ Refresh</button></div>
+          <div id="chatWindow" class="chat-window" role="log" aria-live="polite"><div class="chat-empty"><span class="empty-icon">✧</span><h3>A good question starts here</h3><p>Start a chat, then ask about a program fee, deadline or entry requirements.</p></div></div>
+          <form id="messageForm" class="composer" novalidate>
+            <label class="field" for="messageText">Your message<textarea id="messageText" maxlength="2000" placeholder="What are the fee, deadline and requirements for University of Manchester BSc Computer Science?" disabled></textarea></label>
+            <div class="composer-actions"><small>Every outgoing reply waits for staff approval.</small><button class="btn" id="sendButton" type="submit" disabled>Send question →</button></div>
+            <div id="messageNotice" class="notice" role="status" aria-live="polite"></div>
+          </form>
+        </section>
+      </div>
+    </section>
+    <section class="programs-section" id="programs"><div class="shell">
+      <div class="section-title"><div><div class="eyebrow">Explore what is possible</div><h2>Find a program to discuss.</h2><p>These are fictional fees and dates for the demo. Staff must confirm current official information before an application.</p></div><span id="programCount" class="tag amber">Practice data</span></div>
+      <div class="program-toolbar"><input id="programSearch" class="search" type="search" placeholder="Search university or program" aria-label="Search programs"><div id="countryFilters" class="filters" aria-label="Filter by country"></div></div>
+      <div id="programGrid" class="program-grid"><div class="empty">Loading programs…</div></div>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="shell"><div class="brand"><span class="brand-mark">AC</span><span>AdmitCrew<small>Admissions workspace</small></span></div><p>Local practice portal · No admission guarantees · Staff-approved replies only</p></div></footer>
+</body>
+</html>
