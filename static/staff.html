@@ -21,7 +21,7 @@
         <button class="side-link" type="button" data-view="escalations"><span>Staff escalations</span><span id="escalationCount">0</span></button>
         <button class="side-link" type="button" data-view="activity"><span>Message history</span></button>
         <button class="side-link" type="button" data-view="programs"><span>Program list</span></button>
-        <div class="side-caption">Local tools</div>
+        <button class="side-link" type="button" data-view="integrations"><span>Channels &amp; demo setup</span></button><div class="side-caption">Local tools</div>
         <button class="side-link" type="button" id="sidebarRefresh"><span>↻ Refresh records</span></button>
       </aside>
       <div class="staff-main">
@@ -38,6 +38,16 @@
         <section id="view-documents" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Document results</h2><p class="tiny">Automated checks assist review; authenticity is not verified.</p></div></div><div id="documentsList" class="record-grid"></div></div></section>
         <section id="view-escalations" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Questions for staff</h2><p class="tiny">Unlisted or ambiguous university questions appear here.</p></div></div><div id="escalationsList" class="list"></div></div></section>
         <section id="view-activity" class="staff-view" hidden><div class="two-col"><div class="panel" style="padding:22px"><div class="panel-head"><div><h2>Outbound decisions</h2><p class="tiny">Draft, approved, rejected and sent states.</p></div></div><div id="outboundList" class="list scroll-list"></div></div><div class="panel" style="padding:22px"><div class="panel-head"><div><h2>Audit history</h2><p class="tiny">Agent and staff actions.</p></div></div><div id="auditList" class="list scroll-list"></div></div></div></section>
+        <section id="view-integrations" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Channels and demo setup</h2><p class="tiny">Demo capabilities and optional connections. This page does not run connectivity checks.</p></div><span class="tag amber">Practice scope</span></div><div class="channel-grid">
+<article class="record"><h3>Website chat</h3><span class="tag">Demo channel</span><p>Student intake, program answers and staff-approved replies in the website chat.</p><a class="btn btn-outline btn-small" href="/">Open student portal</a></article>
+<article class="record"><h3>WhatsApp</h3><span class="tag neutral">Optional preview</span><p>Live account connection and sending are not enabled for this demo.</p><a class="btn btn-outline btn-small" href="/#channels">View channel preview</a></article>
+<article class="record"><h3>Facebook Messenger</h3><span class="tag neutral">Optional preview</span><p>Page inquiries can use the same future review flow. Real sending is outside this demo.</p><a class="btn btn-outline btn-small" href="/#channels">View channel preview</a></article>
+</div><div class="demo-status-grid">
+<article class="record"><h3>Answer mode</h3><p>This demo is intended to use rule-based answers from the office program list. Optional LLM access was blocked by exhausted API credits during the last test. No successful real AI response is claimed.</p></article>
+<article class="record"><h3>Document checks</h3><p>PDF text extraction and Tesseract image OCR assist expiry and name matching. Unclear documents need staff review. Use fake documents only.</p></article>
+<article class="record"><h3>n8n reminders</h3><p>The included reminder workflow prepares pending drafts. Use “Run reminder agent” for a manual demo. A published workflow is not evidence of a successful scheduled run.</p></article>
+<article class="record"><h3>Staff oversight</h3><p>Individual staff login, approval queue, document results, conversations and audit history are included. Every outgoing demo reply requires approval.</p></article>
+</div><div class="upload-info">Hosting: the temporary public tunnel requires the host PC, app server and tunnel to remain running.</div></div></section>
         <section id="view-programs" class="staff-view" hidden><div class="panel"><div class="panel-head"><div><h2>Approved practice programs</h2><p class="tiny">Replies can quote only records in this list.</p></div><span class="tag amber">Fictional data</span></div><div id="staffPrograms" class="record-grid"></div></div></section>
       </div>
     </div>

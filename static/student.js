@@ -159,3 +159,9 @@ $('ielts_status').addEventListener('change',toggleIelts);
 for(const id of ['full_name','preferred_country','marks','ielts_score','budget_amount','budget_currency'])$(id).addEventListener('input',updateProgress);
 $('programSearch').addEventListener('input',renderPrograms);
 updateProgress();loadPrograms();restoreSession();
+
+for(const button of document.querySelectorAll('[data-channel-preview]'))button.addEventListener('click',()=>{
+  const panel=$('channelPreview');panel.hidden=false;panel.replaceChildren();
+  panel.append(make('h3',button.dataset.channelPreview+' — demo preview'),make('p','Inquiry → saved lead → program lookup → draft reply → staff approval → channel delivery after future setup.'),make('p','Nothing has been sent. Use website chat for the working demonstration.'));
+  panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+});

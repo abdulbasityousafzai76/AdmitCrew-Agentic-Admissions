@@ -11,7 +11,7 @@
   <div class="student-hero">
     <header class="shell topbar">
       <a class="brand" href="/"><span class="brand-mark">AC</span><span>AdmitCrew<small>Admissions workspace</small></span></a>
-      <nav class="nav" aria-label="Main navigation"><a href="#process">How it works</a><a href="#programs">Programs</a><a class="btn btn-light btn-small" href="/staff">Staff portal ↗</a></nav>
+      <nav class="nav" aria-label="Main navigation"><a href="#process">How it works</a><a href="#programs">Programs</a><a href="#channels">Channels</a><a class="btn btn-light btn-small" href="/staff">Staff portal ↗</a></nav>
     </header>
     <div class="shell hero-grid">
       <div class="hero-copy">
@@ -39,7 +39,7 @@
       <div class="step-item"><span class="step-num">03</span><div><strong>Staff reviews the reply</strong><small>Nothing appears in chat until a staff member approves.</small></div></div>
     </div>
     <section class="shell student-main" id="workspace" aria-label="Student workspace">
-      <div class="section-title"><div><div class="eyebrow">Your admissions workspace</div><h2>One place for your next step.</h2><p>Complete your profile, ask a question, and upload a clearly labeled fake PDF for document checks.</p></div><span id="sessionBadge" class="tag neutral">Start a chat to continue</span></div>
+      <div class="section-title"><div><div class="eyebrow">Your admissions workspace</div><h2>One place for your next step.</h2><p>Complete your profile, ask a question, and upload a clearly labeled fake PDF or image for document checks.</p></div><span id="sessionBadge" class="tag neutral">Start a chat to continue</span></div>
       <div class="work-grid">
         <div>
           <form id="profileForm" class="panel intake-panel" novalidate>
@@ -74,6 +74,23 @@
             <div id="messageNotice" class="notice" role="status" aria-live="polite"></div>
           </form>
         </section>
+      </div>
+    </section>
+    <section class="shell channel-section" id="channels" aria-label="Communication channels">
+      <div class="section-title"><div><div class="eyebrow">Choose how to connect</div><h2>Your admissions conversations, together.</h2><p>The working demo uses website chat. WhatsApp and Facebook are optional previews.</p></div><span class="tag neutral">Practice demo</span></div>
+      <div class="channel-grid">
+        <article class="panel channel-card"><span class="channel-icon">AC</span><span class="tag">Available in demo</span><h3>Website chat</h3><p>Save your profile, ask about programs and receive staff-approved replies.</p><a class="btn btn-small" href="#workspace">Open student workspace →</a></article>
+        <article class="panel channel-card"><span class="channel-icon whatsapp">WA</span><span class="tag neutral">Optional · Not connected</span><h3>WhatsApp</h3><p>Preview how a WhatsApp inquiry could become a saved lead and reviewed reply.</p><button class="btn btn-outline btn-small" type="button" data-channel-preview="WhatsApp">Preview workflow</button></article>
+        <article class="panel channel-card"><span class="channel-icon facebook">f</span><span class="tag neutral">Optional · Not connected</span><h3>Facebook Messenger</h3><p>Preview how a page inquiry could reach the same admissions review desk.</p><button class="btn btn-outline btn-small" type="button" data-channel-preview="Facebook Messenger">Preview workflow</button></article>
+      </div>
+      <div id="channelPreview" class="panel channel-preview" role="status" aria-live="polite" hidden></div>
+      <div class="channel-footnote">No external messages are sent by these previews. All demo replies wait for staff approval.</div>
+      <div class="section-title agent-title"><div><div class="eyebrow">How the team works</div><h2>Four tasks. One staff review desk.</h2></div></div>
+      <div class="channel-grid agent-grid">
+        <article class="panel channel-card"><span class="tag neutral">01 · Intake</span><h3>Welcome and save</h3><p>Collect name, country, marks, IELTS and budget. Returning phone numbers reuse the saved lead.</p></article>
+        <article class="panel channel-card"><span class="tag neutral">02 · University information</span><h3>Answer from the list</h3><p>Copy program facts from the office catalog. Unlisted questions go to staff; admission promises are refused.</p></article>
+        <article class="panel channel-card"><span class="tag neutral">03 · Document review</span><h3>Spot document problems</h3><p>Read fake PDFs or images, check expiry and names, and flag unclear results for staff review.</p></article>
+        <article class="panel channel-card"><span class="tag neutral">04 · Follow-up</span><h3>Prepare reminders</h3><p>Find inactive test leads and draft reminders. Staff approval comes before local chat delivery.</p></article>
       </div>
     </section>
     <section class="programs-section" id="programs"><div class="shell">
