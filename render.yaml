@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: admitcrew-admissions
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: SUPABASE_URL
+        value: https://bxzjunrthbdmicqwgzeh.supabase.co
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: STAFF_AUTH_MODE
+        value: supabase
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: WORKFLOW_TOKEN
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: EXTERNAL_DELIVERY_ENABLED
+        value: "false"

@@ -57,6 +57,7 @@ FACEBOOK_PAGE_ID = os.getenv("FACEBOOK_PAGE_ID", "")
 FACEBOOK_PAGE_ACCESS_TOKEN = os.getenv("FACEBOOK_PAGE_ACCESS_TOKEN", "")
 HOST = os.getenv("HOST", "127.0.0.1")
 PORT = int(os.getenv("PORT", "8765"))
+COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
 BUILD_ID = "admitcrew-2026-09-29-integrations-preview"
 UPLOADS = ROOT / "private_uploads"
 UPLOADS.mkdir(exist_ok=True)
@@ -601,7 +602,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store"); self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "same-origin"); self.send_header("X-Frame-Options", "DENY")
         self.send_header("Content-Length", str(len(body)))
-        if cookie: self.send_header("Set-Cookie", cookie)
+        if cookie: self.send_header("Set-Cookie", cookie + ("; Secure" if COOKIE_SECURE else ""))
         self.end_headers(); self.wfile.write(body)
 
     def token(self, name):
